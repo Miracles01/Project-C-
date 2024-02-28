@@ -1,5 +1,7 @@
-//ตอนนี้แต่งสีให้แล้ว ละก็ทำ leader bard ให้แล้ว ละก็เปลี่ยน ASCII ของ how to play ละก็ ทำ user ให้แล้ว
-// BUG แต่ว่ามีปัญหาตรงที่เวลาหลังหลีดเด้อบอทแล้ว มันจะถามว่า ต้องการเล่นอีกครั้งไหม พอบอกว่าใข่มันจะเด้องออกแล้วให้0คะแนนทันทีเลย
+//ตอนนี้แต่งสีให้แล้ว ละก็ทำ leader bard ให้แล้ว ละก็เปลี่ยน ASCII ของ how to play และstart ละก็ ทำ user ให้แล้ว
+// BUG แต่ว่ามีปัญหาตรงที่เวลาหลัง leader bard แล้ว มันจะถามว่า ต้องการเล่นอีกครั้งไหม พอบอกว่าใข่มันจะเด้องออกแล้วให้0คะแนนทันทีเลย
+
+
 
 #include <iostream>
 #include <string>
@@ -86,6 +88,7 @@ bool askQuestion(const Question& question) {
 
 // Function to display final score
 void displayScore(int score, int totalQuestions) {
+    system("color 0A");
     cout << "    _.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._\n"
          << ".-'---      - ---     --     ---   -----   - --       ----  ----   -     ---`-.\n"
          << " )                                                                           (\n"
@@ -122,6 +125,7 @@ void displayScore(int score, int totalQuestions) {
 void start() {
 	if (cin.get() == '\n') {
 	system("cls");
+    system("color 0A");
     cout << "\nI N F O R M A T I O N   T A B L E\n\n";
     cout << "\tWhat is your name? " <<endl;
     std::cout << "    .       .\n"
@@ -156,6 +160,7 @@ void start() {
 // Function to display how to play instructions
 void howToPlay() {
     system("cls");
+    system("color 0E");
     std::cout << "                     ,---.           ,---.         \n"
                  "                    / /\"`\\.---\"\"\"---./,'\"\\ \\        \n"
                  "                    \\ \\    _       _    / /        \n"
@@ -364,19 +369,24 @@ void quiz4() {
 void menu() {
     system("cls");
     system("color 0A");
-    cout << "\n\n\n\t\t\t\t   __      __   ___  | |   ___    ___    _ __ ___     ___  " << endl;
-    cout << "\t\t\t\t   \\ \\ /\\ / /  / _ \\ | |  / __|  / _ \\  | '_ ` _ \\   / _ \\ " << endl;
-    cout << "\t\t\t\t    \\ V  V /  |  __/ | | | (__  | (_) | | | | | | | |  __/ " << endl;
-    cout << "\t\t\t\t     \\_/\\_/    \\___| |_|  \\___|  \\___/  |_| |_| |_|  \\___| " << endl;
+    cout << "\t\t\t\t  █     █░▓█████  ██▓     ▄████▄   ▒█████   ███▄ ▄███▓▓█████ " << endl;
+    cout << "\t\t\t\t ▓█░ █ ░█░▓█   ▀ ▓██▒    ▒██▀ ▀█  ▒██▒  ██▒▓██▒▀█▀ ██▒▓█   ▀ " << endl;
+    cout << "\t\t\t\t ▒█░ █ ░█ ▒███   ▒██░    ▒▓█    ▄ ▒██░  ██▒▓██    ▓██░▒███   " << endl;
+    cout << "\t\t\t\t ░█░ █ ░█ ▒▓█  ▄ ▒██░    ▒▓▓▄ ▄██▒▒██   ██░▒██    ▒██ ▒▓█  ▄ " << endl;
+    cout << "\t\t\t\t ░░██▒██▓ ░▒████▒░██████▒▒ ▓███▀ ░░ ████▓▒░▒██▒   ░██▒░▒████▒" << endl;
+    cout << "\t\t\t\t ░ ▓░▒ ▒  ░░ ▒░ ░░ ▒░▓  ░░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ░  ░░░ ▒░ ░" << endl;
+    cout << "\t\t\t\t   ▒ ░ ░   ░ ░  ░░ ░ ▒  ░  ░  ▒     ░ ▒ ▒░ ░  ░      ░ ░ ░  ░" << endl;
+    cout << "\t\t\t\t   ░   ░     ░     ░ ░   ░        ░ ░ ░ ▒  ░      ░      ░   " << endl;
+    cout << "\t\t\t\t     ░       ░  ░    ░  ░░ ░          ░ ░         ░      ░  ░" << endl;
+    cout << "\t\t\t\t  ░                       ░                                   " << endl;
     cout << endl;
-    cout << "\t\t\t\t\t\tWelcome to the Quiz Game!\t\t\t\t\t\t\t\t\t\t\t\t" << endl;
-    cout << "\t\t\t\t\t\t  1. Start Game\t\t\t\t\t\t\t\t\t\t\t\t" << endl;
-    cout << "\t\t\t\t\t\t  2. How to Play\t\t\t\t\t\t\t\t\t\t\t\t" << endl;
-    cout << "\t\t\t\t\t\t  3. Exit\t\t\t\t\t\t\t\t\t\t\t\t" << endl;
-    cout << "\t\t\t\t\t\tEnter your choice: ";
+    cout << "\t\t\t\t░\t\tWelcome to the Quiz Game!\t░\t\t\t\t\t\t\t\t\t\t\t" << endl;
+    cout << "\t\t\t\t\t\t░ 1. Start Game\t\t\t\t░\t\t\t\t\t\t\t\t" << endl;
+    cout << "\t\t\t\t\t░\t  2. How to Play\t\t░\t\t\t\t\t\t\t\t\t\t" << endl;
+    cout << "\t\t\t\t\t\t  3. Exit\t\t░\t\t\t\t\t\t\t\t\t\t" << endl;
+    cout << "\t\t\t\t░\t░\tEnter your choice: ";
     cin >> choice;
 }
-
 // Main function
 int main() {
     menu();
@@ -419,3 +429,4 @@ int main() {
     
     return 0;
 }
+
