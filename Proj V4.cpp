@@ -72,7 +72,7 @@ void shuffleQuestions(Question questions[], int numQuestions) {
 
 // Function to ask a question and get user's answer
 bool askQuestion(const Question& question) {
-     ////////////////////////////
+     
     Question shuffledQuestion = question;
     shuffleOptions(shuffledQuestion); // Shuffle options
     cout << question.questionText << endl;
@@ -87,22 +87,31 @@ bool askQuestion(const Question& question) {
 }
 
 
+void swa(string n[4],int s[4]){
+    for(int i=4;i>1;i--){
+      for(int j=0;j< i-1;j++){
+        if(s[j] < s[j+1]){
+            swap(s[j],s[j+1]);
+            swap(n[j],n[j+1]);
+        }}}}
 
 // Function to display final score
-void displayScore(int score, int totalQuestions) {
+void displayScore(int score, int totalQuestions , int &g,string n[],int s[],int &gc) {
+    s[gc] = score;
+    swa(n,s);
     system("color 0A");
     cout << "    _.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._\n"
          << ".-'---      - ---     --     ---   -----   - --       ----  ----   -     ---`-.\n"
          << " )                                                                           (\n"
          << "(                           L E A D E R   B A R D                             )\n"
          << " )                                                                           (\n"
-         << "(     1.     " << "Jeson" << ": " << "9" << "/" << "10" << endl
+         << "(     1.     " << n[0] << ": " << s[0] << "/" << "10" << endl
          << " )                                                                           (\n"
          << "(                                                                             )\n"
-         << " )    2.     " << Name[0] << ": " << score << "/" << totalQuestions << endl
+         << " )    2.     " << n[1] << ": " << s[1] << "/" << totalQuestions << endl
          << "(                                                                             )\n"
          << " )                                                                            (\n"
-         << "(   *New*    " << Name[1] << ": " << score << "/" << totalQuestions << endl                                                                   
+         << "(     3.    " << n[2] << ": " << s[2] << "/" << totalQuestions << endl                                                                   
          << " )                                                                           (\n"
          << "(___       _       _       _       _       _       _       _       _       ___)\n"
          << "    `-._.-' (___ _) (__ _ ) (_   _) (__  _) ( __ _) (__  _) (__ _ ) `-._.-'\n"
@@ -116,15 +125,16 @@ void displayScore(int score, int totalQuestions) {
     cin >> playAgain;
     if(playAgain == "Yes" || playAgain == "yes"){
         score = 0;
-        menu();
+        g=1;
     } else if(playAgain == "No" || playAgain == "no"){
         cout << "OK, Goodbye! ";
+        g=0;
     }
 }
 
 
 // Function to start the game
-void start() {
+void start(string  n[4],int &gc) {
 	if (cin.get() == '\n') {
 	system("cls");
     system("color 0A");
@@ -137,7 +147,7 @@ void start() {
                  " \\   ._I_.  /\n"
                  "   `-_____-'\n";
 
-    getline(cin, Name[0]);
+    getline(cin, n[gc]);
     cout << "Which topic would you like to play?" << endl;
     cout << "[1]. Animal World" << endl;
     cout << "[2]. science" << endl;
@@ -205,7 +215,7 @@ void howToPlay() {
 
 
 // Function to handle quiz logic
-void quiz() {
+void quiz(int &g,string n[4],int s[4],int &gc) {
     // Array of questions Animal World
     Question questions[] = {
         {"Which animal spends 90persent of its day sleeping?", {"Koala bear", "Panda bear", "Polar bear", "Grizzly bear"}, 1},
@@ -243,10 +253,10 @@ void quiz() {
     }
 
     // Display final score
-    displayScore(score, 10);
+    displayScore(score, 10,g,n,s,gc);
 }
 
-void quiz2() {
+void quiz2(int &g,string n[4],int s[4],int &gc) {
     // Array of questions วิทยาศสาตน์
     Question questions[] = {
         {"What did Isaac Newton discover?", {"X-ray", "Law of Gravitation", "Calculator", "Electricity"}, 2},
@@ -284,10 +294,10 @@ void quiz2() {
     }
 
     // Display final score
-    displayScore(score, 10);
+    displayScore(score, 10,g,n,s,gc);
 }
 
-void quiz3() {
+void quiz3(int &g,string n[4],int s[4],int &gc) {
     // Array of questions คณิต
     Question questions[] = {
         {"2x + 5 when x = 2", {"4", "6", "7", "9"}, 4},
@@ -325,9 +335,9 @@ void quiz3() {
     }
 
     // Display final score
-    displayScore(score, 10);
+    displayScore(score, 10,g,n,s,gc);
 }
-void quiz4() {
+void quiz4(int &g,string n[4],int s[4],int &gc) {
     // Array of questions ภูมิศาสตร์
     Question questions[] = {
         {"How many continents are there on Earth?", {"4", "6", "7", "9"}, 3},
@@ -353,7 +363,7 @@ void quiz4() {
     int score = 0;
     shuffleQuestions(questions, numQuestions);
     // Iterate through each question
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 1; ++i) {
         cout << "\n************ Question " << i + 1 << " ************" << endl;
         if (askQuestion(questions[i])) {
             cout << "Correct!" << endl;
@@ -364,9 +374,9 @@ void quiz4() {
         // Pause for 2 seconds before displaying the next question
         this_thread::sleep_for(chrono::seconds(2));
     }
-
+   
     // Display final score
-    displayScore(score, 10);
+    displayScore(score, 10 ,g,n,s,gc);
 }
 
 void quiz3l() {
@@ -458,7 +468,7 @@ void quiz3l() {
     }
 
     // Display final score
-    cout << "You answered " << cquiz << " questions correctly";
+    cout << "You answered " << cquiz << " questions correctly\n";
 }
 
 // Function to display the main menu
@@ -485,19 +495,22 @@ void menu() {
 }
 // Main function
 int main() {
+    int game = 1;
+    static int gcount = 0;
+    static string name[4];
+    static int scor[4];
     menu();
-  
     switch (choice) {
         case 1:
-            start();
+            start(name,gcount);
             if(topic == "1") {
-                quiz();
+                quiz(game,name,scor,gcount);
             } else if(topic == "2") {
-                quiz2();
+                quiz2(game,name,scor,gcount);
             } else if(topic == "3") {
-                quiz3();
+                quiz3(game,name,scor,gcount);
             } else if(topic == "4") {
-                quiz4();
+                quiz4(game,name,scor,gcount);
             } else if(topic == "5") {
                 quiz3l();
             }
@@ -522,9 +535,11 @@ int main() {
             main(); // Go back to main menu
             break;
     }
-    
+    if(game == 1){
+       if(gcount<3){ gcount++;}
+        main();}
     // After the quiz is completed, display the final score
-    if(topic != "5"){displayScore(score, totalQuestions);}
-    
+    //if(topic != "5"){displayScore(score, totalQuestions);}
+
     return 0;
 }
