@@ -1,6 +1,3 @@
-//ตอนนี้แต่งสีให้แล้ว ละก็ทำ leader bard ให้แล้ว ละก็เปลี่ยน ASCII ของ how to play และstart ละก็ ทำ user ให้แล้ว
-// BUG แต่ว่ามีปัญหาตรงที่เวลาหลัง leader bard แล้ว มันจะถามว่า ต้องการเล่นอีกครั้งไหม พอบอกว่าใข่มันจะเด้องออกแล้วให้0คะแนนทันทีเลย
-
 
 
 
@@ -94,6 +91,43 @@ void swa(string n[4],int s[4]){
             swap(s[j],s[j+1]);
             swap(n[j],n[j+1]);
         }}}}
+
+
+
+
+
+
+
+void endisplayScore(string n[],int s[]) {
+    
+    system("color 0A");
+    cout << "\n\n\n    _.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._\n"
+         << ".-'---      - ---     --     ---   -----   - --       ----  ----   -     ---`-.\n"
+         << " )                             -::||E N D||::-                               (\n"
+         << "(                         =|L E A D E R   B A R D|=                           )\n"
+         << " )                                                                           (\n"
+         << "(     1.     " << n[0] << ": " << s[0] << "/" << "10" << endl
+         << " )                                                                           (\n"
+         << "(                                                                             )\n"
+         << " )    2.     " << n[1] << ": " << s[1] << "/" << "10" << endl
+         << "(                                                                             )\n"
+         << " )                                                                            (\n"
+         << "(     3.    " << n[2] << ": " << s[2] << "/" << "10" << endl                                                                   
+         << " )                                                                           (\n"
+         << "(___       _       _       _       _       _       _       _       _       ___)\n"
+         << "    `-._.-' (___ _) (__ _ ) (_   _) (__  _) ( __ _) (__  _) (__ _ ) `-._.-'\n"
+         << "            `-._.-' (  ___) ( _  _) ( _ __) (_  __) (__ __) `-._.-'\n"
+         << "                    `-._.-' (__  _) (__  _) (_ _ _) `-._.-'\n"
+         << "                            `-._.-' (_ ___) `-._.-'\n"
+         << "                                    `-._.-'\n";
+
+}
+
+
+
+
+
+
 
 // Function to display final score
 void displayScore(int score, int totalQuestions , int &g,string n[],int s[],int &gc) {
@@ -379,7 +413,7 @@ void quiz4(int &g,string n[4],int s[4],int &gc) {
     displayScore(score, 10 ,g,n,s,gc);
 }
 
-void quiz3l() {
+void quiz3l(int &g) {
     // Array of questions ภูมิศาสตร์
     Question questions[] = {
         {"How many continents are there on Earth?", {"4", "6", "7", "9"}, 3},
@@ -466,10 +500,48 @@ void quiz3l() {
         // Pause for 2 seconds before displaying the next question
         this_thread::sleep_for(chrono::seconds(2));
     }
+if (cquiz < 58) {
+    cout << "oooooo   oooo                            oooo                         .  " << endl;
+    cout << " `888.   .8'                             `888                       .o8  " << endl;
+    cout << "  `888. .8'    .ooooo.  oooo  oooo        888   .ooooo.   .oooo.o .o888oo" << endl;
+    cout << "   `888.8'    d88' `88b `888  `888        888  d88' `88b d88(  \"8   888  " << endl;
+    cout << "    `888'     888   888  888   888        888  888   888 `" << "Y88b.    888  " << endl;
+    cout << "     888      888   888  888   888        888  888   888 o.  )88b   888 . " << endl;
+    cout << "    o888o     `Y8bod8P'  `V88V\"V8P'      o888o `Y8bod8P' 8\"\"888P'   \"888\"" << endl;
+           
+        }
+    if (life >=58) {
+    cout << "oooooo   oooo                                              o8o             " << endl;
+    cout << " `888.   .8'                                               `\"'             " << endl;
+    cout << "  `888. .8'    .ooooo.  oooo  oooo       oooo oooo    ooo oooo  ooo. .oo.  " << endl;
+    cout << "   `888.8'    d88' `88b `888  `888        `88. `88.  .8'  `888  `888P\"Y88b " << endl;
+    cout << "    `888'     888   888  888   888         `88..]88..8'    888   888   888 " << endl;
+    cout << "     888      888   888  888   888          `888'`888'     888   888   888 " << endl;
+    cout << "    o888o     `Y8bod8P'  `V88V\"V8P'          `8'  `8'     o888o o888o o888o" << endl;
+    }
+    cout << "\n\n\n\n\n";
+cout << "  (¯`·.¸¸.·´¯`·.¸¸.·´¯¯`·.¸¸.·´¯`·.¸¸.·´¯¯`·.¸¸.·´¯`·.¸¸.·´¯)" << endl;
+cout << "  ( \\                                                       // )" << endl;
+cout << " ( \\ )                                                       ( / )" << endl;
+cout << "( ) (          You answered " << cquiz << " questions correctly           ) ( )" << endl;
+cout << " ( / )                                                         ( \\ )" << endl;
+cout << "  ( /                                                         \\ )" << endl;
+cout << "   (_.·´¯`·.¸¸.·´¯`·.¸__.·´¯`·.¸¸.·´¯`·.¸_.·´¯`·.¸¸.·´¯`·.¸__)" << endl;
 
-    // Display final score
-    cout << "You answered " << cquiz << " questions correctly\n";
+
+cout << "Do you want to start a QUIZ again? (Yes/No)" << endl;
+    string playAgain;
+    cin >> playAgain;
+    if(playAgain == "Yes" || playAgain == "yes"){
+        score = 0;
+        g=1;
+    } else if(playAgain == "No" || playAgain == "no"){
+        cout << "OK, Goodbye! ";
+        g=0;
+    }
+
 }
+
 
 // Function to display the main menu
 void menu() {
@@ -512,7 +584,7 @@ int main() {
             } else if(topic == "4") {
                 quiz4(game,name,scor,gcount);
             } else if(topic == "5") {
-                quiz3l();
+                quiz3l(game);
             }
             break;
         case 2:
@@ -537,9 +609,8 @@ int main() {
     }
     if(game == 1){
        if(gcount<3){ gcount++;}
-        main();}
-    // After the quiz is completed, display the final score
-    //if(topic != "5"){displayScore(score, totalQuestions);}
+        main();}else{endisplayScore(name,scor);}
+    
 
     return 0;
 }
